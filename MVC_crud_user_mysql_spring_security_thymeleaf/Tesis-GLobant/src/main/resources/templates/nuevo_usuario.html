@@ -1,0 +1,28 @@
+
+<form th:action="@{/guardar}" th:object="${usuario}" method="post">
+    <div class="form-froup">
+        <label>Nombre:</label>
+        <input type="text" name="n  ombre" th:field="*{nombre}" class="form-control" placeholder="digite el nombre" required>
+
+    </div>
+    <div class="form-froup">
+        <label>Apellido:</label>
+        <input type="text" name="apellido" th:field="*{apellido}" class="form-control" placeholder="digite el apellido" required>
+
+    </div>
+    <div class="form-froup">
+        <label>Email</label>
+        <input type="email" name="email" th:field="*{email}" class="form-control" placeholder="digite el email" required>
+
+    </div>
+    <div class="form-froup">
+        <label>Password:</label>
+        <input type="password" name="password" th:field="*{password}" class="form-control" placeholder="digite la contraseña" required>
+
+    </div>
+
+    <div class="box-footer">
+        <button class="btn btn-success">Guardar</button>
+
+    </div>
+</form>

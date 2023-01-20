@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/template ::head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<header th:replace="/template :: header">
+
+
+</header>
+<body><span th:text="#{language.change}"></span>:
+<select id="locales">
+    <option value=""></option>
+    <option value="en" th:text="#{language.english}"></option>
+    <option value="de" th:text="#{language.german}"></option>
+</select>
+<h1 th:text="#{welcome.message}"></h1>
+<div class="container-center">
+    <div class="container-center">
+        <div class="p-2">
+        <a class="h2" th:href="@{/weathers/new}" th:text="#{new.weather}"></a>
+        </div>
+        <div class="container-center">
+            <div class="container text-center">
+                <h1 th:text="#{list.weather}"></h1>
+                <table class="table table-sub-heading-color table-striped">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Location</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="weather :${listWeathers}">
+                        <th scope="row" th:text="${weather.id}"></th>
+                        <th scope="row" th:text="${#dates.format(weather.date, 'yyyy-MM-dd')}"></th>
+                        <th scope="row" th:text="${weather.location.city}"></th>
+                        <td>
+                            <a class="btn btn-secondary" th:href="@{'/weathers/edit/'+${weather.id}}">Edit</a>
+                            &nbsp;
+                            <a class="btn btn-danger" th:href="@{'/weathers/delete/'+ ${weather.id}}">Delete</a>
+                        </td>
+
+                    </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+
+
+        </div>
+    </div>
+
+
+</div>
+</div>
+
+
+<footer th:replace="/template ::footer">
+
+</footer>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#locales").change(function () {
+            var selectedOption = $('#locales').val();
+            if (selectedOption != '') {
+                window.location.replace('?lang=' + selectedOption);
+            }
+        });
+    });
+</script>
+</body>
+</html>
+
+
+

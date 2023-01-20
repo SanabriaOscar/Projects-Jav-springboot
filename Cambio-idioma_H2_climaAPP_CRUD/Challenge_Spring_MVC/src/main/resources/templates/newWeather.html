@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/template ::head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<header th:replace="/template :: header">
+
+
+</header>
+<body>
+<div class="container-center">
+    <div class="container-center">
+        <div>
+            <h1 th:if="${weather.id}==null">create weather</h1>
+            <h1 th:if="${weather.id}!=null">update weather</h1>
+        </div>
+<!--        <div class="p-2">-->
+<!--            <a class="h2" th:href="@{/weathers/new}">New weather</a>-->
+<!--        </div>-->
+        <form th:action="@{/weathers/save}" th:object="${weather}" method="post">
+
+            <input type="hidden" th:field="*{id}" th:value="${weather.id}">
+            <div class="form-froup col-md-6">
+                <label>Date</label>
+                <input type="date" name="date" th:field="*{date}" class="form-control" placeholder="" required>
+                <label>Location</label>
+                <select th:field ="*{location}" class="form-control">
+                    <th:block th:each="location: ${listLocations}">
+                        <option th:text="${location.city}" th:value="${location.id}"></option>
+                    </th:block>
+                </select>
+            </div>
+
+            <div class="box-footer">
+                <button class="btn btn-success">Save</button>
+
+            </div>
+        </form>
+    </div>
+
+
+</div>
+</div>
+
+
+<footer th:replace="/template ::footer">
+
+</footer>
+
+</body>
+</html>
+
+
+
