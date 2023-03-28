@@ -14,7 +14,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
-public class EmailServiceImpl implements IEmailService{
+public class EmailServiceImpl implements IEmailService {
     @Autowired
     private EmailRepository emailRepository;
     @Autowired
@@ -28,16 +28,20 @@ public class EmailServiceImpl implements IEmailService{
 
 
 
+
     @Override
     public Set<Email> getInbox(String recipient) {
-    return userRepository.findAll().stream().filter(user->user.getName().equals(recipient))
-            .findFirst().get().getEmails();
+        return userRepository.findAll().stream().filter(user -> user.getName().equals(recipient))
+                .findFirst().get().getEmails();
 
 
     }
-
-
     @Override
+    public String sendEmail(Email email) {
+        return null;
+    }
+
+    /*@Override
     public String sendEmail(Email email) {
         String recipient = email.getPrimaryRecipient();
 
@@ -67,6 +71,7 @@ public class EmailServiceImpl implements IEmailService{
 
         return statement;
 
-    }
+    }*/
 }
+
 
