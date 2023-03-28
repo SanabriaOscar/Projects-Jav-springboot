@@ -1,5 +1,6 @@
 package com.example.TestbbogotaREST.controller;
 
+import com.example.TestbbogotaREST.exceptions.ResourceNotFoundException;
 import com.example.TestbbogotaREST.model.DocumentType;
 import com.example.TestbbogotaREST.service.DocumentTypeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
