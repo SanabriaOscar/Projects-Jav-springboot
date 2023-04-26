@@ -1,0 +1,7 @@
+{
+  "name": "finanzenReact",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
