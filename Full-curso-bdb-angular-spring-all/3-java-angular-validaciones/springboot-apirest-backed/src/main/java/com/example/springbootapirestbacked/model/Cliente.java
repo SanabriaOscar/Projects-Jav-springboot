@@ -5,24 +5,22 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.validation.annotation.Validated;
 
 
-import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name = "clientes")
 public class Cliente implements Serializable {
-    public static final long serialversionUID=1L;
+    public static final long serialversionUID=1L; 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long id;
     @Column(nullable = false)
     private  String nombre;
     private  String apellido;
-    @Column(nullable = false, unique = true)
+   // @Column(nullable = false, unique = true)
     private  String email;
     @Column(name = "create_at",nullable = false)
     @Temporal(TemporalType.DATE)
