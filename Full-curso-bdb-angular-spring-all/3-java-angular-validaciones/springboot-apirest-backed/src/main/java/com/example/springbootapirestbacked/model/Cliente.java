@@ -20,7 +20,7 @@ public class Cliente implements Serializable {
     @Column(nullable = false)
     private  String nombre;
     private  String apellido;
-    @Column(nullable = false, unique = true)
+   // @Column(nullable = false, unique = true)
     private  String email;
     @Column(name = "create_at",nullable = false)
     @Temporal(TemporalType.DATE)

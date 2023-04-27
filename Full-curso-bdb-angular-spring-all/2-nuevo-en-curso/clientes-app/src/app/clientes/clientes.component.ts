@@ -19,6 +19,7 @@ export class ClientesComponent {
       clientes => this.clientes=clientes
       );
     }
+    
 
     delete(cliente: Cliente):void{
       const swalWithBootstrapButtons = Swal.mixin({
