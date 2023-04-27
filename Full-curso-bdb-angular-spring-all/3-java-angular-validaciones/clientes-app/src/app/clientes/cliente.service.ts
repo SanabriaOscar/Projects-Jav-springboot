@@ -43,14 +43,12 @@ export class ClienteService {
     
     create(cliente: Cliente): Observable<any> {
       // Verificar si los campos están vacíos
-      if (!cliente.nombre || !cliente.apellido || !cliente.email) {
+     // if (!cliente.nombre || !cliente.apellido || !cliente.email) {
         // Mostrar mensaje de error con SweetAlert
-        Swal.fire('Error', 'Por favor completa todos los campos', 'error');
+       // Swal.fire('Error', 'Por favor completa todos los campos', 'error');
         // Devolver un Observable que emita un error
-        return throwError('Campos vacíos');
-      }
-    
-      // Continuar con la creación del cliente
+       // return throwError('Campos vacíos');
+      //}
       return this.http.post<any>(this.urlEndPoint, cliente, { headers: this.httpHeadres }).pipe(
         catchError(e => {
           // this.router.navigate(['/clientes']);

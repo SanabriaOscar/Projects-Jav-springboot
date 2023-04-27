@@ -27,18 +27,39 @@ export class ClienteService {
 
   }
     
-  create(cliente:Cliente):Observable<Cliente>{
+ /* create(cliente: Cliente): Observable<Cliente> {
     // return this.http.post<Cliente>(this.urlEndPoint,cliente,{headers:this.httpHeadres});
      return this.http.post<Cliente>(this.urlEndPoint,cliente,{headers:this.httpHeadres}).pipe(
       catchError(e=>{
         //this.router.navigate(['/clientes']);
         console.log(e.error.mensaje);
-        Swal.fire('Error al crear al cliente ', e.error.mensaje, "error");
+        Swal.fire('Error al crear al cliente ', e.error.error, "error");
         return throwError(e);
 
       })
+    
      );
-    }
+    }*/
+    
+    create(cliente: Cliente): Observable<any> {
+      // Verificar si los campos están vacíos
+      if (!cliente.nombre || !cliente.apellido || !cliente.email) {
+        // Mostrar mensaje de error con SweetAlert
+        Swal.fire('Error', 'Por favor completa todos los campos', 'error');
+        // Devolver un Observable que emita un error
+        return throwError('Campos vacíos');
+      }
+    
+      // Continuar con la creación del cliente
+      return this.http.post<any>(this.urlEndPoint, cliente, { headers: this.httpHeadres }).pipe(
+        catchError(e => {
+          // this.router.navigate(['/clientes']);
+          console.log(e.error.error);
+          Swal.fire('Error al crear al cliente', e.error.error, 'error');
+          return throwError(e);
+        })
+      );
+    } 
 
  getCliente(id: any):Observable<Cliente>{
      // return this.http.get<Cliente>(`${this.urlEndPoint}/${id}`);
@@ -52,9 +73,9 @@ export class ClienteService {
       );
     }
 
-    update(cliente:Cliente):Observable<Cliente>{
+    update(cliente:Cliente):Observable<any>{
       //return this.http.put<Cliente>(`${this.urlEndPoint}/${cliente.id}`, cliente, {headers: this.httpHeadres});
-      return this.http.put<Cliente>(`${this.urlEndPoint}/${cliente.id}`, cliente, {headers: this.httpHeadres}).pipe(
+      return this.http.put<any>(`${this.urlEndPoint}/${cliente.id}`, cliente, {headers: this.httpHeadres}).pipe(
         catchError(e=>{
           //this.router.navigate(['/clientes']);
           console.log(e.error.mensaje);

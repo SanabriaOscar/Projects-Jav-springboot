@@ -20,6 +20,8 @@ constructor( private clienteService: ClienteService,
 ngOnInit(){
   this.cargarCliente();
 }
+
+
 cargarCliente():void{
 this.activatedRoute.params.subscribe(params =>{
   let id= +params['id']
@@ -31,9 +33,9 @@ this.activatedRoute.params.subscribe(params =>{
 update():void{
 
   this.clienteService.update(this.cliente)
-  .subscribe(cliente =>{
+  .subscribe(json =>{
     this.router.navigate(['/clientes'])
-    Swal.fire('Cliente actualizado', `Cliente ${cliente.nombre} actualizado con éxito`,'success')
+    Swal.fire('Cliente actualizado', `${json.mensaje}: ${json.cliente.nombre} `,'success')
   })
 }
 
@@ -45,9 +47,9 @@ create():void{
  .subscribe(response =>this.router.navigate(['/clientes'])
  );*/
  this.clienteService.create(this.cliente)
- .subscribe(cliente =>{
+ .subscribe(json =>{
   this.router.navigate(['/clientes'])
-  Swal.fire('Nuevo cliente', `Cliente ${cliente.nombre} creado con éxito`,'success')
+  Swal.fire('Nuevo cliente', `${json.mensaje}: ${json.cliente.nombre} `,'success')
  }
  );
 }
