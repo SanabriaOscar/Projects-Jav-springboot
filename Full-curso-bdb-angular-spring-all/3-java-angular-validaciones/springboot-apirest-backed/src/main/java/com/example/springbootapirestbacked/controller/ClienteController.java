@@ -8,14 +8,9 @@ package com.example.springbootapirestbacked.controller;
         import org.springframework.dao.DataAccessException;
         import org.springframework.http.HttpStatus;
         import org.springframework.http.ResponseEntity;
-        import org.springframework.validation.BindingResult;
-        import org.springframework.validation.FieldError;
-        import org.springframework.validation.annotation.Validated;
         import org.springframework.web.bind.annotation.*;
 
-        import javax.validation.Valid;
         import java.util.*;
-        import java.util.stream.Collectors;
 
 @CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
@@ -50,48 +45,26 @@ public class ClienteController {
        return new ResponseEntity<Cliente>(cliente, HttpStatus.OK);
    }
 
+
     @PostMapping("/clientes")
-    public ResponseEntity<?> create( @Valid @RequestBody Cliente cliente, BindingResult result) {
+    public ResponseEntity<?>  create(@RequestBody Cliente cliente){
         Map<String, Object> response = new HashMap<>();
-        if (cliente == null || cliente.getNombre() == null || cliente.getApellido() == null || cliente.getEmail() == null) {
-            response.put("mensaje", "Los datos del cliente no pueden estar vacíos");
-        }
-        if (result.hasErrors()) {
-         List<String> errors = result.getFieldErrors()
-                    .stream()
-                    .map(err -> err.getField() + ": " + err.getDefaultMessage())
-                    .collect(Collectors.toList());
-                    response.put("errors",errors);
-            return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
-
-        }
-
-        Cliente clienteNew = null;
+        Cliente clienteNew=null;
         try {
-            clienteNew = clienteService.save(cliente);
-        } catch (DataAccessException e) {
+           clienteNew= clienteService.save(cliente);
+        }catch (DataAccessException e) {
             response.put("mensaje", "Error al realizar el insert en base de datos");
             response.put("error", e.getMessage().concat(":").concat(e.getMostSpecificCause().getMessage()));
             return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
         }
-
-        response.put("mensaje", "El cliente ha sido creado con éxito");
-        response.put("cliente", clienteNew);
-        return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
+        response.put("mensaje","El cliente ha sido creado con éxito");
+        response.put("cliente",clienteNew);
+        return new ResponseEntity<Map<String, Object>>(response,HttpStatus.CREATED);
     }
 
-
     @PutMapping("/clientes/{id}")
-    public ResponseEntity<?> updateProduct(@RequestBody Cliente cliente,BindingResult result, @PathVariable Long id) {
+    public ResponseEntity<?> updateProduct(@PathVariable Long id, @RequestBody Cliente cliente) {
         Map<String, Object> response = new HashMap<>();
-        if (result.hasErrors()){
-            List<String> errors = result.getAllErrors()
-                    .stream()
-                    .map(err -> "El campo '" + err.getObjectName() + "' " + err.getDefaultMessage())
-                    .collect(Collectors.toList());
-            response.put("errors", errors);
-            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.BAD_REQUEST);
-        }
         Cliente clienteActual = clienteService.findById(id);
         Cliente clienteUpdated = null;
         if (clienteActual == null) {
