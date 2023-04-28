@@ -1,6 +1,8 @@
 package com.example.springbootapirestbacked.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,10 +19,15 @@ public class Cliente implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  Long id;
+    @NotEmpty(message = "El nombre no puede estar vacío")
     @Column(nullable = false)
     private  String nombre;
+    @NotEmpty(message = "El apellido no puede estar vacío")
+    @Column(nullable = false)
     private  String apellido;
-   // @Column(nullable = false, unique = true)
+    @NotEmpty(message = "El email no puede estar vacío")
+    @Email(message = "El email debe ser válido")
+    @Column(nullable = false, unique = true)
     private  String email;
     @Column(name = "create_at",nullable = false)
     @Temporal(TemporalType.DATE)

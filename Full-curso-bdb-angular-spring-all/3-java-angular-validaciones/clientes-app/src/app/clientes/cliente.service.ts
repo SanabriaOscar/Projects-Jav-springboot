@@ -51,6 +51,9 @@ export class ClienteService {
       //}
       return this.http.post<any>(this.urlEndPoint, cliente, { headers: this.httpHeadres }).pipe(
         catchError(e => {
+          if(e.status==400){
+            return throwError(e);
+          }
           // this.router.navigate(['/clientes']);
           console.log(e.error.error);
           Swal.fire('Error al crear al cliente', e.error.error, 'error');
@@ -75,6 +78,9 @@ export class ClienteService {
       //return this.http.put<Cliente>(`${this.urlEndPoint}/${cliente.id}`, cliente, {headers: this.httpHeadres});
       return this.http.put<any>(`${this.urlEndPoint}/${cliente.id}`, cliente, {headers: this.httpHeadres}).pipe(
         catchError(e=>{
+            if(e.status==400){
+              return throwError(e);
+            }
           //this.router.navigate(['/clientes']);
           console.log(e.error.mensaje);
           Swal.fire('Error al actualizar al cliente ', e.error.mensaje, "error");
