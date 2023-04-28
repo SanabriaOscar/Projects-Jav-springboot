@@ -13,6 +13,7 @@ export class FormComponent implements OnInit{
 
 public cliente: Cliente=new Cliente();
 public titulo: string="Crear cliente";
+public errores: string[] | undefined
 constructor( private clienteService: ClienteService, 
   private router: Router, private activatedRoute: ActivatedRoute ){
 
@@ -36,7 +37,12 @@ update():void{
   .subscribe(json =>{
     this.router.navigate(['/clientes'])
     Swal.fire('Cliente actualizado', `${json.mensaje}: ${json.cliente.nombre} `,'success')
-  })
+  },
+  err =>{
+   this.errores=err.error.errors as string[];
+   console.log(err.error.errors);
+   console.log("Estoy desde el backend"+err.status);
+  });
 }
 
 
@@ -50,6 +56,11 @@ create():void{
  .subscribe(json =>{
   this.router.navigate(['/clientes'])
   Swal.fire('Nuevo cliente', `${json.mensaje}: ${json.cliente.nombre} `,'success')
+ },
+ err =>{
+  this.errores=err.error.errors as string[];
+  console.log(err.error.errors);
+  console.log("Estoy desde el backend"+err.status);
  }
  );
 }
