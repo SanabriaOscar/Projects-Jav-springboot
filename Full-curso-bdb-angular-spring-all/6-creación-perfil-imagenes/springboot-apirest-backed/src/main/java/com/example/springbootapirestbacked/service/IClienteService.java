@@ -1,6 +1,7 @@
-package com.example.springbootapirestbacked.repository.service;
+package com.example.springbootapirestbacked.service;
 
 import com.example.springbootapirestbacked.model.Cliente;
+import com.example.springbootapirestbacked.model.Region;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -13,6 +14,7 @@ public interface IClienteService {
     public Cliente save(Cliente cliente);
     public Cliente findById(Long id);
     public void delete(Long id);
+    public List<Region>findAllRegiones();
 
 
 }

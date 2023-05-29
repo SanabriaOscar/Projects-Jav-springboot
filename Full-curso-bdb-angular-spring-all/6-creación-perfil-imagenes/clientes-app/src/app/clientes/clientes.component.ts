@@ -31,7 +31,7 @@ export class ClientesComponent {
         .pipe(
           tap((response: any) => {
             (response.content as Cliente[]).forEach(cliente => {
-              console.log(cliente.nombre);
+             // console.log(cliente.nombre);
             });
           })
         ).subscribe(response => {this.clientes = response.content as Cliente[]

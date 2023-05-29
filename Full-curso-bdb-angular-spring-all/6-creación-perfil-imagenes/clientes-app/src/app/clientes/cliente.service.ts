@@ -7,6 +7,7 @@ import { map, catchError, tap} from 'rxjs/operators';
 import { HttpClient, HttpHandler, HttpHeaders} from '@angular/common/http';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { Region } from './region';
 @Injectable({
   providedIn: 'root'
 })
@@ -144,6 +145,10 @@ export class ClienteService {
             return throwError(e);
           })
         );
+      }
+
+      getRegiones():Observable<Region[]>{
+        return this.http.get<Region[]>(this.urlEndPoint+'/regiones');
       }
 
     }
