@@ -2,7 +2,8 @@
 package com.example.springbootapirestbacked.controller;
 
         import com.example.springbootapirestbacked.model.Cliente;
-        import com.example.springbootapirestbacked.repository.service.IClienteService;
+        import com.example.springbootapirestbacked.model.Region;
+        import com.example.springbootapirestbacked.service.IClienteService;
         import org.springframework.core.io.Resource;
         import org.springframework.core.io.UrlResource;
         import jakarta.validation.Valid;
@@ -161,6 +162,7 @@ public class ClienteController {
             clienteActual.setApellido(cliente.getApellido());
             clienteActual.setEmail(cliente.getEmail());
             clienteActual.setCreateAt(cliente.getCreateAt() );
+            clienteActual.setRegion(cliente.getRegion() );
         clienteUpdated= clienteService.save(clienteActual);
         }catch (DataAccessException e){
             logger.error(e);
@@ -200,5 +202,10 @@ public class ClienteController {
         }
         response.put("mensaje","El cliente ha sido eliminado con éxito");
         return new ResponseEntity<Map<String, Object>>(response,HttpStatus.OK);
+    }
+
+    @GetMapping("/clientes/regiones")
+    public List<Region> listarRegiones(){
+        return clienteService.findAllRegiones();
     }
 }

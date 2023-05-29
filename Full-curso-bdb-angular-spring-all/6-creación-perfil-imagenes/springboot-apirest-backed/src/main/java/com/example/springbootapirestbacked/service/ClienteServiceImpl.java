@@ -1,6 +1,7 @@
-package com.example.springbootapirestbacked.repository.service;
+package com.example.springbootapirestbacked.service;
 
 import com.example.springbootapirestbacked.model.Cliente;
+import com.example.springbootapirestbacked.model.Region;
 import com.example.springbootapirestbacked.repository.ClienteRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,5 +44,11 @@ public class ClienteServiceImpl implements IClienteService{
     @Transactional
     public void delete(Long id) {
             clienteRepository.deleteById(id);
+    }
+
+    @Override
+    @Transactional
+    public List<Region> findAllRegiones() {
+        return clienteRepository.findAllRegiones();
     }
 }
