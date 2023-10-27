@@ -1,0 +1,6 @@
+2023-06-02T09:57:52.948-05:00  WARN 9928 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=14h33m49s980ms898µs900ns).
+2023-06-02T10:39:52.718-05:00  INFO 9928 --- [http-nio-8080-exec-1] c.e.s.controller.ClienteController       : C:\Users\Oscar Jesus Sanabria\Documents\GitHub\Projects-Jav-springboot\Full-curso-bdb-angular-spring-all\6-creación-perfil-imagenes\springboot-apirest-backed\uploads\b4c9af78-10b6-453e-98ba-84679bd138d5_fotodeperfil.png
+2023-06-02T10:39:52.768-05:00  INFO 9928 --- [http-nio-8080-exec-6] c.e.s.controller.ClienteController       : C:\Users\Oscar Jesus Sanabria\Documents\GitHub\Projects-Jav-springboot\Full-curso-bdb-angular-spring-all\6-creación-perfil-imagenes\springboot-apirest-backed\uploads\b4c9af78-10b6-453e-98ba-84679bd138d5_fotodeperfil.png
+2023-06-02T10:50:32.702-05:00  INFO 9928 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-06-02T10:50:32.732-05:00  INFO 9928 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-06-02T10:50:32.740-05:00  INFO 9928 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

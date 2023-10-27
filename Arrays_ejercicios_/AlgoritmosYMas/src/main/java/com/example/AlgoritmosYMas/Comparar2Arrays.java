@@ -2,6 +2,7 @@ package com.example.AlgoritmosYMas;
 
 public class Comparar2Arrays {
     public static void main(String[] args) {
+
         commonElements(new int[]{2,3,5,4,5}, new int[]{5,6,7, 5,8});
     }
 
