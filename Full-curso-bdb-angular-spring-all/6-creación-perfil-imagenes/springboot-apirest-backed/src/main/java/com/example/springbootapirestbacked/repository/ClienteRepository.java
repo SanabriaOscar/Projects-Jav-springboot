@@ -13,3 +13,5 @@ public interface ClienteRepository extends JpaRepository<Cliente,Long> {
  @Query("from Region ")
     public List<Region>findAllRegiones();
 }
+
+
