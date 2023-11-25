@@ -1,0 +1,9 @@
+/* Estilos específicos para form-user */
+.container {
+    max-width: 800px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  

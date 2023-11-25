@@ -1,0 +1,32 @@
+<!-- list-user.component.html -->
+<div class="container mt-4">
+    <h2>Listado de Usuarios</h2>
+    <table class="table table-bordered table-striped text-center" *ngIf="users?.length">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Email</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let usuario of users">
+          <td>{{ usuario.idUser }}</td>
+          <td>{{ usuario.name }}</td>
+          <td>{{ usuario.lastname }}</td>
+          <td>{{ usuario.email }}</td>
+          <td>
+            <button type="button" [routerLink]="['/users/form/', usuario.idUser]" class="btn btn-warning btn-sm">Editar</button>
+            <button type="button" (click)="deleteUser(usuario.idUser)" class="btn btn-danger btn-sm">Eliminar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div *ngIf="users?.length === 0" class="alert alert-info mt-3">
+      No hay usuarios registrados.
+    </div>
+  </div>
+  
+  
