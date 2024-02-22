@@ -1,6 +1,7 @@
 <!-- list-user.component.html -->
 <div class="container mt-4">
     <h2>Listado de Usuarios</h2>
+    <button type="button" [routerLink]="['/users/form']" class="btn btn-success mb-3">Crear Usuario</button>
     <table class="table table-bordered table-striped text-center" *ngIf="users?.length">
       <thead>
         <tr>
