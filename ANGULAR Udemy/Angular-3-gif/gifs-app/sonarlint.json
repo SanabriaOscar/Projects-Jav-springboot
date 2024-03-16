@@ -1,0 +1,18 @@
+{
+  "serverId": "my-sonarqube-server",
+  "projectKey": "gifs-app",
+  "projectName": "gifs-app",
+  "projectVersion": "1.0",
+  "analysisProperties": {
+    "sonar.sources": "src",
+    "sonar.exclusions": "**/node_modules/**,**/*.spec.ts",
+    "sonar.typescript.lcov.reportPaths": "coverage/lcov.info"
+  },
+  "extraProperties": {
+    "sonar.typescript.tsconfigPath": "tsconfig.json"
+  },
+  "rules": {
+    "typescript:S1234": "off",
+    "javascript:S5678": "warn"
+  }
+}
