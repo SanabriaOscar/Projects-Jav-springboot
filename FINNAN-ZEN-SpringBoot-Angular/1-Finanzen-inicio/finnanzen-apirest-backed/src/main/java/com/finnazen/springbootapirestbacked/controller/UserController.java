@@ -4,14 +4,18 @@ import com.finnazen.springbootapirestbacked.exceptions.ErrorServerAdmin;
 import com.finnazen.springbootapirestbacked.exceptions.ResourceNotFoundException;
 import com.finnazen.springbootapirestbacked.model.User;
 import com.finnazen.springbootapirestbacked.service.IUserService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/users")
@@ -41,14 +45,18 @@ public class UserController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<Object> saveUser(@RequestBody User user) {
+    public ResponseEntity<?> saveUser(@Valid @RequestBody User user, BindingResult result) {
+        Map<String, Object> response = new HashMap<>();
         try {
+            // Intentar guardar el usuario
             userService.saveUser(user);
-            String successMessage = "Usuario creado con éxito.";
-            return ResponseEntity.status(HttpStatus.CREATED).body(successMessage);
+            response.put("mensaje", "Usuario creado con éxito.");
+            return ResponseEntity.status(HttpStatus.CREATED).body(response);
         } catch (ErrorServerAdmin e) {
-            logger.error("Error al guardar el usuario.", e);
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+            // En caso de excepción, manejarla y devolver un mensaje de error
+            String errorMessage = "Error al guardar el usuario: " + e.getMessage();
+            response.put("mensaje", errorMessage);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
 
@@ -73,43 +81,54 @@ public class UserController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Object> updateUser(@RequestBody User user, @PathVariable Long id) {
+        Map<String, Object> response = new HashMap<>();
+
         try {
+            // Intentar actualizar el usuario
             User userUpdated = userService.UpdateUserById(user, id);
             if (userUpdated != null) {
-                String successMessage = "Usuario actualizado con éxito.";
-                return ResponseEntity.status(HttpStatus.OK).body(successMessage);
+                response.put("mensaje", "Usuario actualizado con éxito.");
+                return ResponseEntity.status(HttpStatus.OK).body(response);
             } else {
-                String errorMessage = "No se encontró el usuario con el id: " + id;
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
+                response.put("mensaje", "No se encontró el usuario con el id: " + id);
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
             }
-
         } catch (ResourceNotFoundException e) {
+            // En caso de excepción, manejarla y devolver un mensaje de error
             logger.error("Error al actualizar el usuario.", e);
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+            response.put("mensaje", e.getMessage());
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
         } catch (ErrorServerAdmin e) {
+            // En caso de excepción, manejarla y devolver un mensaje de error
             logger.error("Error al actualizar el usuario.", e);
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+            response.put("mensaje", e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public ResponseEntity<Object> deleteUser(@PathVariable Long id) {
+        Map<String, Object> response = new HashMap<>();
         try {
             User deletedUser = userService.findByIdUser(id);
             if (deletedUser != null) {
                 userService.deleteUserById(id);
-                return ResponseEntity.status(HttpStatus.OK).body("Usuario eliminado con éxito.");
+                response.put("mensaje", "Usuario eliminado con éxito.");
+                return ResponseEntity.status(HttpStatus.OK).body(response);
             } else {
                 String errorMessage = "No se encontró el usuario con el id: " + id;
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
+                response.put("mensaje", errorMessage);
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
             }
         } catch (ResourceNotFoundException e) {
             logger.error("Error al eliminar el usuario.", e);
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+            response.put("mensaje", e.getMessage());
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
         } catch (ErrorServerAdmin e) {
             logger.error("Error al eliminar el usuario.", e);
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+            response.put("mensaje", e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
     }
 }

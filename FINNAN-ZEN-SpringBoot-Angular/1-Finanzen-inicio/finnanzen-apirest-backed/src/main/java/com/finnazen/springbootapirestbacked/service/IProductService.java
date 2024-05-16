@@ -1,6 +1,6 @@
 package com.finnazen.springbootapirestbacked.service;
 
-import com.finnazen.springbootapirestbacked.model.Product;;
+import com.finnazen.springbootapirestbacked.model.Product;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;

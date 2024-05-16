@@ -1,6 +1,6 @@
 package com.finnazen.springbootapirestbacked.service;
 
-import com.finnazen.springbootapirestbacked.model.Role;;
+import com.finnazen.springbootapirestbacked.model.Role;
 
 import java.util.List;
 

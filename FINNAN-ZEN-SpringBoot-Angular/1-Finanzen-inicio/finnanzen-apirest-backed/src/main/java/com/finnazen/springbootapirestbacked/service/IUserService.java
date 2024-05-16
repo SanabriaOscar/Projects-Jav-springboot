@@ -2,7 +2,7 @@ package com.finnazen.springbootapirestbacked.service;
 
 
 
-import com.finnazen.springbootapirestbacked.model.User;;
+import com.finnazen.springbootapirestbacked.model.User;
 
 import java.util.List;
 

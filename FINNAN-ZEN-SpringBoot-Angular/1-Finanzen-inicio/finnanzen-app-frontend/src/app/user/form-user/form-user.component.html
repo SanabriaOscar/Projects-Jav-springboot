@@ -1,33 +1,47 @@
-
 <div class="container mt-4">
-    <h2>Formulario de Usuario</h2>
-    <form [formGroup]="userForm" (ngSubmit)="saveUser()">
-      <div class="form-group">
-        <label for="name">Nombre:</label>
-        <input type="text" formControlName="name" class="form-control" required>
+  <h2>Formulario de Usuario</h2>
+  <form [formGroup]="userForm" (ngSubmit)="saveUser()">
+    <div class="form-group">
+      <label for="name">Nombre:</label>
+      <input type="text" id="name" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && userForm.get('name')?.errors }" required>
+      <div *ngIf="submitted && userForm.get('name')?.errors" class="invalid-feedback">
+        <div *ngIf="userForm.get('name')?.errors?.['required']">El nombre es requerido</div>
       </div>
-  
-      <div class="form-group">
-        <label for="lastname">Apellido:</label>
-        <input type="text" formControlName="lastname" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+      <label for="lastname">Apellido:</label>
+      <input type="text" id="lastname" formControlName="lastname" class="form-control" [ngClass]="{ 'is-invalid': submitted && userForm.get('lastname')?.errors }" required>
+      <div *ngIf="submitted && userForm.get('lastname')?.errors" class="invalid-feedback">
+        <div *ngIf="userForm.get('lastname')?.errors?.['required']">El apellido es requerido</div>
       </div>
-  
-      <div class="form-group">
-        <label for="identification">Identificación:</label>
-        <input type="text" formControlName="identification" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+      <label for="identification">Identificación:</label>
+      <input type="text" id="identification" formControlName="identification" class="form-control" [ngClass]="{ 'is-invalid': submitted && userForm.get('identification')?.errors }" required>
+      <div *ngIf="submitted && userForm.get('identification')?.errors" class="invalid-feedback">
+        <div *ngIf="userForm.get('identification')?.errors?.['required']">La identificación es requerida</div>
       </div>
-  
-      <div class="form-group">
-        <label for="email">Email:</label>
-        <input type="email" formControlName="email" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" id="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && userForm.get('email')?.errors }" required>
+      <div *ngIf="submitted && userForm.get('email')?.errors" class="invalid-feedback">
+        <div *ngIf="userForm.get('email')?.errors?.['required']">El email es requerido</div>
+        <div *ngIf="userForm.get('email')?.errors?.['email']">El email debe tener un formato válido</div>
       </div>
-  
-      <div class="form-group">
-        <label for="password">Contraseña:</label>
-        <input type="password" formControlName="password" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+      <label for="password">Contraseña:</label>
+      <input type="password" id="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && userForm.get('password')?.errors }" required>
+      <div *ngIf="submitted && userForm.get('password')?.errors" class="invalid-feedback">
+        <div *ngIf="userForm.get('password')?.errors?.['required']">La contraseña es requerida</div>
       </div>
-  
-      <button type="submit" class="btn btn-primary">Guardar</button>
-    </form>
-  </div>
-  
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+  </form>
+</div>

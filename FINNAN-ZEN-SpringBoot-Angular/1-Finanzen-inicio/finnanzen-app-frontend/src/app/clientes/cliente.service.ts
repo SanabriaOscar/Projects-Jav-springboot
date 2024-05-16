@@ -52,7 +52,7 @@ export class ClienteService {
       })
     );
   }
-    
+
  /* create(cliente: Cliente): Observable<Cliente> {
     // return this.http.post<Cliente>(this.urlEndPoint,cliente,{headers:this.httpHeadres});
      return this.http.post<Cliente>(this.urlEndPoint,cliente,{headers:this.httpHeadres}).pipe(
@@ -63,20 +63,12 @@ export class ClienteService {
         return throwError(e);
 
       })
-    
+
      );
     }*/
-    
+
     create(cliente: Cliente): Observable<any> {
-    
-      // Verificar si los campos están vacíos
-     // if (!cliente.nombre || !cliente.apellido || !cliente.email) {
-        // Mostrar mensaje de error con SweetAlert
-       // Swal.fire('Error', 'Por favor completa todos los campos', 'error');
-        // Devolver un Observable que emita un error
-       // return throwError('Campos vacíos');
-      //}
-     /*--------------------code tutorial---------------*/ 
+
      return this.http.post<any>(this.urlEndPoint, cliente, { headers: this.httpHeadres }).pipe(
         catchError(e => {
           if(e.status==400){
@@ -91,7 +83,7 @@ export class ClienteService {
           return throwError(e);
         })
       );
-    } 
+    }
 
  getCliente(id: any):Observable<Cliente>{
      // return this.http.get<Cliente>(`${this.urlEndPoint}/${id}`);
@@ -116,7 +108,7 @@ export class ClienteService {
           console.log(e.error.mensaje);
           Swal.fire('Error al actualizar al cliente ', e.error.mensaje, "error");
           return throwError(e);
-  
+
         })
        );
     }
@@ -128,7 +120,7 @@ export class ClienteService {
           console.log(e.error.mensaje);
           Swal.fire('Error al eliminar al cliente ', e.error.mensaje, "error");
           return throwError(e);
-  
+
         })
        );
       }
@@ -136,7 +128,7 @@ export class ClienteService {
         const formData = new FormData();
         formData.append('archivo', archivo);
         formData.append('id', id.toString());
-      
+
         return this.http.post(`${this.urlEndPoint}/upload`, formData).pipe(
           map((response: any) => response.cliente as Cliente),
           catchError(e => {
@@ -154,5 +146,5 @@ export class ClienteService {
     }
 
 
-  
+
 
