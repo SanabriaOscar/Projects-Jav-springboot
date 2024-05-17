@@ -62,13 +62,14 @@ public class UserController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Object> findByIdUser(@PathVariable Long id) {
+        Map<String, Object> response = new HashMap<>();
         try {
             User user = userService.findByIdUser(id);
             if (user != null) {
                 return ResponseEntity.ok(user);
             } else {
-                String errorMessage = "No se encontró el usuario con el id: " + id;
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
+                response.put("mensaje", "No se encontró el usuario con el id: " + id);
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(response);
             }
         } catch (ResourceNotFoundException e) {
             logger.error("Error al buscar el usuario por ID.", e);
