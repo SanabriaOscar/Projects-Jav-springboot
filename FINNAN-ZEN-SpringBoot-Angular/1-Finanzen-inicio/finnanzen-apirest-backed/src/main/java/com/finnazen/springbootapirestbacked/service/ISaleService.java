@@ -1,6 +1,6 @@
 package com.finnazen.springbootapirestbacked.service;
 
-import com.finnazen.springbootapirestbacked.model.Sale;;
+import com.finnazen.springbootapirestbacked.model.Sale;
 
 import java.util.List;
 

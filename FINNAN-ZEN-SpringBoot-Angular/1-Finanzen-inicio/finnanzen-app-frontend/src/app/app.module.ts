@@ -14,10 +14,14 @@ import { ClienteService } from './clientes/cliente.service';
 import { FormComponent } from './clientes/form.component';
 import { PaginatorComponent } from './paginator/paginator.component';
 import { DetalleComponent } from './clientes/detalle/detalle.component';
-import { UserModule } from './user/user.module'; // Ajusta la ruta según tu estructura
+import { UserModule } from './user/user.module';
+import { LoginComponent } from './login/login.component';
+import { LoginModule } from './login/login.module';
+
 
 const routes: Routes = [
-  { path: '', redirectTo: '/clientes', pathMatch: 'full' },
+    { path: 'login', component: LoginComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'directivas', component: DirectivaComponent },
   { path: 'clientes', component: ClientesComponent },
   { path: 'clientes/page/:page', component: ClientesComponent },
@@ -36,6 +40,7 @@ const routes: Routes = [
     FormComponent,
     PaginatorComponent,
     DetalleComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -43,6 +48,7 @@ const routes: Routes = [
     FormsModule,
     RouterModule.forRoot(routes),
     UserModule,
+    LoginModule,
   ],
   providers: [ClienteService],
   bootstrap: [AppComponent],

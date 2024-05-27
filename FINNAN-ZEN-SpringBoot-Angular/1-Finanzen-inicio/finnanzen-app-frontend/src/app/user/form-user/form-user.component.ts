@@ -15,7 +15,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class FormUserComponent implements OnInit {
   user: User = new User();
   userForm!: FormGroup;
-
+  submitted = false; // Define la propiedad submitted
   constructor(
     private userService: UserService,
     private activatedRoute: ActivatedRoute,
@@ -71,27 +71,36 @@ export class FormUserComponent implements OnInit {
     this.userService.createUser(formData).subscribe(
       (response) => {
         console.log('Create user response:', response);
-        Swal.fire('¡Guardado!', response, 'success');
+        if (response && response.mensaje) {
+          Swal.fire('¡Guardado!', response.mensaje, 'success'); // Mostrar el mensaje recibido del backend
+        } else {
+          Swal.fire('¡Guardado!', 'Usuario creado con éxito', 'success'); // Si no hay mensaje en la respuesta, mostrar un mensaje predeterminado
+        }
         this.router.navigate(['/users']);
       },
       (error) => {
         console.error('Error saving user:', error);
-        Swal.fire('Error', error, 'error');
+        if (error && error.error) {
+          Swal.fire('Error', error.error, 'error'); // Mostrar el mensaje de error recibido del backend
+        } else {
+          Swal.fire('Error', 'Hubo un problema al guardar el usuario', 'error'); // Si no hay mensaje de error en la respuesta, mostrar un mensaje predeterminado
+        }
       }
     );
   }
 
+
   updateUser(formData: any): void {
     this.userService.updateUser(formData).subscribe(
       (response) => {
-        console.log('Update user response:', response);
+       // console.log('Update user response:', response);
         Swal.fire('¡Actualizado!', response, 'success');
         this.router.navigate(['/users']);
       },
       (error) => {
         console.error('Error updating user:', error);
 
-        if (error instanceof HttpErrorResponse && error.error instanceof ProgressEvent) {
+       if (error instanceof HttpErrorResponse && error.error instanceof ProgressEvent) {
           Swal.fire('Error', 'Hubo un problema de red al actualizar el usuario.', 'error');
         } else {
           Swal.fire('Error', 'Hubo un problema al actualizar el usuario.', 'error');

@@ -9,4 +9,7 @@ export class CardListComponent {
 
   @Input()
   public gifs: Gif[]=[];
+//nesecito crea un componente que  muestre una lista de imagenes en forma de tarjeta (con titulo y descripcion)
+
+  constructor(){}
 }
