@@ -3340,3 +3340,134 @@ org.springframework.security.authentication.BadCredentialsException: Bad credent
 2024-05-30T19:25:50.943-05:00 DEBUG 12532 --- [http-nio-8080-exec-10] o.s.s.a.dao.DaoAuthenticationProvider    : Authenticated user
 2024-05-30T19:25:51.012-05:00 DEBUG 12532 --- [http-nio-8080-exec-3] o.s.s.a.dao.DaoAuthenticationProvider    : Authenticated user
 2024-05-30T19:28:01.614-05:00 DEBUG 12532 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Securing POST /login
+2024-05-30T19:28:01.808-05:00 DEBUG 12532 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        u1_0.id_user,
+        u1_0.email,
+        u1_0.identification,
+        u1_0.lastname,
+        u1_0.name,
+        u1_0.password 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2024-05-30T19:28:01.811-05:00 DEBUG 12532 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        p1_0.id_user,
+        p1_0.id,
+        p1_0.create_at,
+        p1_0.id_rol 
+    from
+        permisos p1_0 
+    where
+        p1_0.id_user=?
+2024-05-30T19:28:01.813-05:00 DEBUG 12532 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        r1_0.id_rol,
+        r1_0.name 
+    from
+        roles r1_0 
+    where
+        r1_0.id_rol=?
+2024-05-30T19:28:01.993-05:00 DEBUG 12532 --- [http-nio-8080-exec-1] o.s.s.a.dao.DaoAuthenticationProvider    : Authenticated user
+2024-05-30T19:28:01.995-05:00 DEBUG 12532 --- [http-nio-8080-exec-1] o.s.s.w.a.www.BasicAuthenticationFilter  : Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=osanab@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, credentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[USER]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=09E28F8F169B5B18C7C6CA2C0F0B4D8A], Granted Authorities=[USER]]
+2024-05-30T19:28:01.996-05:00 DEBUG 12532 --- [http-nio-8080-exec-1] o.s.s.w.a.i.FilterSecurityInterceptor    : Authorized filter invocation [POST /login] with attributes [permitAll]
+2024-05-30T19:28:01.997-05:00 DEBUG 12532 --- [http-nio-8080-exec-1] o.s.security.web.FilterChainProxy        : Secured POST /login
+2024-05-30T19:28:02.003-05:00 DEBUG 12532 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        u1_0.id_user,
+        u1_0.email,
+        u1_0.identification,
+        u1_0.lastname,
+        u1_0.name,
+        u1_0.password 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2024-05-30T19:28:02.005-05:00 DEBUG 12532 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        p1_0.id_user,
+        p1_0.id,
+        p1_0.create_at,
+        p1_0.id_rol 
+    from
+        permisos p1_0 
+    where
+        p1_0.id_user=?
+2024-05-30T19:28:02.009-05:00 DEBUG 12532 --- [http-nio-8080-exec-1] org.hibernate.SQL                        : 
+    select
+        r1_0.id_rol,
+        r1_0.name 
+    from
+        roles r1_0 
+    where
+        r1_0.id_rol=?
+2024-05-30T19:28:02.195-05:00 DEBUG 12532 --- [http-nio-8080-exec-1] o.s.s.a.dao.DaoAuthenticationProvider    : Authenticated user
+2024-05-30T19:28:09.913-05:00 DEBUG 12532 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Securing POST /login
+2024-05-30T19:28:09.917-05:00 DEBUG 12532 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        u1_0.id_user,
+        u1_0.email,
+        u1_0.identification,
+        u1_0.lastname,
+        u1_0.name,
+        u1_0.password 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2024-05-30T19:28:09.919-05:00 DEBUG 12532 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        p1_0.id_user,
+        p1_0.id,
+        p1_0.create_at,
+        p1_0.id_rol 
+    from
+        permisos p1_0 
+    where
+        p1_0.id_user=?
+2024-05-30T19:28:09.921-05:00 DEBUG 12532 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        r1_0.id_rol,
+        r1_0.name 
+    from
+        roles r1_0 
+    where
+        r1_0.id_rol=?
+2024-05-30T19:28:10.104-05:00 DEBUG 12532 --- [http-nio-8080-exec-2] o.s.s.a.dao.DaoAuthenticationProvider    : Authenticated user
+2024-05-30T19:28:10.105-05:00 DEBUG 12532 --- [http-nio-8080-exec-2] o.s.s.w.a.www.BasicAuthenticationFilter  : Set SecurityContextHolder to UsernamePasswordAuthenticationToken [Principal=org.springframework.security.core.userdetails.User [Username=osanab@gmail.com, Password=[PROTECTED], Enabled=true, AccountNonExpired=true, credentialsNonExpired=true, AccountNonLocked=true, Granted Authorities=[USER]], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=0:0:0:0:0:0:0:1, SessionId=09E28F8F169B5B18C7C6CA2C0F0B4D8A], Granted Authorities=[USER]]
+2024-05-30T19:28:10.106-05:00 DEBUG 12532 --- [http-nio-8080-exec-2] o.s.s.w.a.i.FilterSecurityInterceptor    : Authorized filter invocation [POST /login] with attributes [permitAll]
+2024-05-30T19:28:10.106-05:00 DEBUG 12532 --- [http-nio-8080-exec-2] o.s.security.web.FilterChainProxy        : Secured POST /login
+2024-05-30T19:28:10.110-05:00 DEBUG 12532 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        u1_0.id_user,
+        u1_0.email,
+        u1_0.identification,
+        u1_0.lastname,
+        u1_0.name,
+        u1_0.password 
+    from
+        users u1_0 
+    where
+        u1_0.email=?
+2024-05-30T19:28:10.113-05:00 DEBUG 12532 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        p1_0.id_user,
+        p1_0.id,
+        p1_0.create_at,
+        p1_0.id_rol 
+    from
+        permisos p1_0 
+    where
+        p1_0.id_user=?
+2024-05-30T19:28:10.115-05:00 DEBUG 12532 --- [http-nio-8080-exec-2] org.hibernate.SQL                        : 
+    select
+        r1_0.id_rol,
+        r1_0.name 
+    from
+        roles r1_0 
+    where
+        r1_0.id_rol=?
+2024-05-30T19:28:10.306-05:00 DEBUG 12532 --- [http-nio-8080-exec-2] o.s.s.a.dao.DaoAuthenticationProvider    : Authenticated user
