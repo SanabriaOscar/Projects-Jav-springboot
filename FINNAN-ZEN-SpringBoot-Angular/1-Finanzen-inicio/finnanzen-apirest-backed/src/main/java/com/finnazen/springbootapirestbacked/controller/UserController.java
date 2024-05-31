@@ -1,17 +1,18 @@
 package com.finnazen.springbootapirestbacked.controller;
 
+import com.finnazen.springbootapirestbacked.dto.UserDto;
 import com.finnazen.springbootapirestbacked.exceptions.ErrorServerAdmin;
 import com.finnazen.springbootapirestbacked.exceptions.ResourceNotFoundException;
 import com.finnazen.springbootapirestbacked.model.User;
 import com.finnazen.springbootapirestbacked.service.IUserService;
 import jakarta.validation.Valid;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.util.HashMap;
 import java.util.List;
@@ -45,11 +46,11 @@ public class UserController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public ResponseEntity<?> saveUser(@Valid @RequestBody User user, BindingResult result) {
+    public ResponseEntity<?> saveUser(@Valid @RequestBody UserDto userDto, BindingResult result) {
         Map<String, Object> response = new HashMap<>();
         try {
             // Intentar guardar el usuario
-            userService.saveUser(user);
+            userService.saveUser(userDto);
             response.put("mensaje", "Usuario creado con éxito.");
             return ResponseEntity.status(HttpStatus.CREATED).body(response);
         } catch (ErrorServerAdmin e) {
@@ -58,8 +59,8 @@ public class UserController {
             response.put("mensaje", errorMessage);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
         }
-    }
 
+    }
     @GetMapping("/{id}")
     public ResponseEntity<Object> findByIdUser(@PathVariable Long id) {
         Map<String, Object> response = new HashMap<>();
@@ -86,7 +87,7 @@ public class UserController {
 
         try {
             // Intentar actualizar el usuario
-            User userUpdated = userService.UpdateUserById(user, id);
+            User userUpdated = userService.updateUserById(user, id);
             if (userUpdated != null) {
                 response.put("mensaje", "Usuario actualizado con éxito.");
                 return ResponseEntity.status(HttpStatus.OK).body(response);

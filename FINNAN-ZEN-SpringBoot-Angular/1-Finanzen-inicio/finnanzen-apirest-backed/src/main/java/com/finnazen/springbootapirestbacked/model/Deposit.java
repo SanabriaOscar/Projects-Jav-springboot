@@ -26,4 +26,35 @@ public class Deposit {
     @ManyToOne
     @JoinColumn(name="idUser")
     private User user;
+	public Long getIdDeposit() {
+		return idDeposit;
+	}
+	public void setIdDeposit(Long idDeposit) {
+		this.idDeposit = idDeposit;
+	}
+	public double getMonto() {
+		return monto;
+	}
+	public void setMonto(double monto) {
+		this.monto = monto;
+	}
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
+	}
+	public Sale getSale() {
+		return sale;
+	}
+	public void setSale(Sale sale) {
+		this.sale = sale;
+	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+    
 }

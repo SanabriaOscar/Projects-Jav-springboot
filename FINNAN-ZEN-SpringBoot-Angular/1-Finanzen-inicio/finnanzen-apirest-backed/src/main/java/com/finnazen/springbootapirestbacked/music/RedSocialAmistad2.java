@@ -1,5 +1,9 @@
 package com.finnazen.springbootapirestbacked.music;
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 public class RedSocialAmistad2 {
 
         private Map<String, List<String>> conexiones;

@@ -29,6 +29,30 @@ public class Category {
     @JsonIgnore
     @OneToMany(mappedBy="category", cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Product> product;
+	public Long getIdCategory() {
+		return idCategory;
+	}
+	public void setIdCategory(Long idCategory) {
+		this.idCategory = idCategory;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public List<Product> getProduct() {
+		return product;
+	}
+	public void setProduct(List<Product> product) {
+		this.product = product;
+	}
 
 
 }
