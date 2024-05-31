@@ -2,9 +2,7 @@ package com.finnazen.springbootapirestbacked.model;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
@@ -12,15 +10,12 @@ import java.util.Date;
 @Getter
 @Setter
 @Entity
-@AllArgsConstructor
-@NoArgsConstructor
 @Table(name = "permisos")
 public class PermisosUserRol {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "create_at",nullable = false)
     @NotNull(message = "La fecha no puede ser nula")
     @Temporal(TemporalType.DATE)
     private Date createAt;
@@ -29,8 +24,39 @@ public class PermisosUserRol {
     @JoinColumn(name = "idUser")
     private User user;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idRol")
     private Role rol;
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Date getCreateAt() {
+        return createAt;
+    }
+
+    public void setCreateAt(Date createAt) {
+        this.createAt = createAt;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    public Role getRol() {
+        return rol;
+    }
+
+    public void setRol(Role rol) {
+        this.rol = rol;
+    }
 }

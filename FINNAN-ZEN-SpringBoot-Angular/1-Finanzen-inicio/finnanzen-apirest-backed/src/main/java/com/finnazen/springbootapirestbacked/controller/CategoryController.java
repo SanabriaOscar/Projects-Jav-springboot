@@ -4,9 +4,8 @@ import com.finnazen.springbootapirestbacked.exceptions.ErrorServerAdmin;
 import com.finnazen.springbootapirestbacked.exceptions.ResourceNotFoundException;
 import com.finnazen.springbootapirestbacked.model.Category;
 import com.finnazen.springbootapirestbacked.service.ICategoryService;
-import org.apache.logging.log4j.LogManager;
+/*import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,9 +16,9 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/categories")
+@RequestMapping("/api/categories")*/
 public class CategoryController {
-    private static final Logger logger = LogManager.getLogger(ClienteController.class);
+  /*  private static final Logger logger = LogManager.getLogger(ClienteController.class);
 
     @Autowired
     private ICategoryService categoryService;
@@ -118,6 +117,6 @@ public class CategoryController {
             logger.error("Error al eliminar la categoría.", e);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
-    }
+    }*/
 
 }

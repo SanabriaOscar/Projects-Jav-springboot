@@ -39,5 +39,66 @@ public class Product {
     @JsonIgnore
     @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Sale> sales;
+	public Long getIdProduct() {
+		return idProduct;
+	}
+	public void setIdProduct(Long idProduct) {
+		this.idProduct = idProduct;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public double getWeight() {
+		return weight;
+	}
+	public void setWeight(double weight) {
+		this.weight = weight;
+	}
+	public String getBarcode() {
+		return barcode;
+	}
+	public void setBarcode(String barcode) {
+		this.barcode = barcode;
+	}
+	public double getIva() {
+		return iva;
+	}
+	public void setIva(double iva) {
+		this.iva = iva;
+	}
+	public double getStock() {
+		return stock;
+	}
+	public void setStock(double stock) {
+		this.stock = stock;
+	}
+	public double getPriceBuy() {
+		return priceBuy;
+	}
+	public void setPriceBuy(double priceBuy) {
+		this.priceBuy = priceBuy;
+	}
+	public double getPricesale() {
+		return pricesale;
+	}
+	public void setPricesale(double pricesale) {
+		this.pricesale = pricesale;
+	}
+	public Category getCategory() {
+		return category;
+	}
+	public void setCategory(Category category) {
+		this.category = category;
+	}
+	public List<Sale> getSales() {
+		return sales;
+	}
+	public void setSales(List<Sale> sales) {
+		this.sales = sales;
+	}
+    
 
 }

@@ -27,4 +27,37 @@ public class PaymentDetails {
     private String transactionId;
       /*@OneToMany(mappedBy = "idSale", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Sale> sales;*/
+
+	public Long getPaymentId() {
+		return paymentId;
+	}
+
+	public void setPaymentId(Long paymentId) {
+		this.paymentId = paymentId;
+	}
+
+	public String getPaymentType() {
+		return paymentType;
+	}
+
+	public void setPaymentType(String paymentType) {
+		this.paymentType = paymentType;
+	}
+
+	public Double getAmount() {
+		return amount;
+	}
+
+	public void setAmount(Double amount) {
+		this.amount = amount;
+	}
+
+	public String getTransactionId() {
+		return transactionId;
+	}
+
+	public void setTransactionId(String transactionId) {
+		this.transactionId = transactionId;
+	}
+    
 }
