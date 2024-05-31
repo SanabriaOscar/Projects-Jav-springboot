@@ -1,0 +1,20 @@
+/* styles.css */
+.full-width {
+  width: 100%;
+}
+
+.container-fluid {
+  padding: 0;
+}
+
+.sidebar {
+  height: 100vh; /* Full height */
+  padding: 1rem;
+  background-color: #f8f9fa;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    height: auto;
+  }
+}
